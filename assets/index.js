@@ -8,7 +8,21 @@ class Counter extends React.Component {
         super(props);
         this.state = {
             counter: 0
-        }
+        };
+
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+    }
+
+    increment() {
+       this.setState({
+           counter: this.state.counter + 1
+       })
+    }
+    decrement() {
+        this.setState({
+            counter: this.state.counter - 1
+        })
     }
 
     render () {
@@ -16,8 +30,12 @@ class Counter extends React.Component {
         console.log(counter);
         return React.createElement(React.Fragment, null, 
             React.createElement('h1', null, counter), 
-            React.createElement('button',null, '+'), 
-            React.createElement('button',null, '-')
+            React.createElement('button',{
+                onClick: this.increment
+            }, '+'),
+            React.createElement('button',{
+                onClick: this.decrement
+            }, '-')
         );
         
         
