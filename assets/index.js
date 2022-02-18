@@ -1,50 +1,35 @@
 'use strict'
 
-class Counter extends React.Component {
-    constructor(props){
+
+class Greeting extends React.Component{
+    constructor(props) {
         super(props);
         this.state = {
-            counter: 0
-        };
-    }
-
-    increment = () => {
-       this.setState({
-           counter: this.state.counter + 1
-       })
-    }
-    decrement = (event) => {
-        console.log(event)
-        if(this.state.counter > 0 ) {
-            this.setState({
-                counter: this.state.counter - 1
-            })
+            name: 'User',
+            lastName: 'Userovich'
         }
     }
 
-    greeting = () => {
-        console.log('Hello to you!');
+    changeName = () => {
+        this.setState({
+            name: 'Anonym',
+            lastName: 'Anonymus'
+        })
     }
 
+    render() {
+        const {name, lastName} = this.state;
 
-    render () {
-        const {counter } = this.state;
-        console.log(this);
-        return React.createElement(React.Fragment, null, 
-            React.createElement('h1', null, counter), 
-            React.createElement('button',{
-                onClick: this.increment
-            }, '+'),
-            React.createElement('button',{
-                onClick: this.decrement,
-                onMouseOver: this.greeting
-            }, '-')
+        return React.createElement(React.Fragment, null,
+        React.createElement('p', null, name, lastName), 
+        React.createElement('button', {onClick: this.changeName}, 'LogOut')
         );
-        
-        
     }
+
+
 }
 
-const reactCounterElement = React.createElement(Counter, {});
+
+const reactCounterElement = React.createElement(Greeting, {});
 
 ReactDOM.render(reactCounterElement, document.getElementById('root'));
