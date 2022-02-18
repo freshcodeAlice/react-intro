@@ -13,13 +13,19 @@ class Counter extends React.Component {
            counter: this.state.counter + 1
        })
     }
-    decrement = () => {
+    decrement = (event) => {
+        console.log(event)
         if(this.state.counter > 0 ) {
             this.setState({
                 counter: this.state.counter - 1
             })
         }
     }
+
+    greeting = () => {
+        console.log('Hello to you!');
+    }
+
 
     render () {
         const {counter } = this.state;
@@ -30,7 +36,8 @@ class Counter extends React.Component {
                 onClick: this.increment
             }, '+'),
             React.createElement('button',{
-                onClick: this.decrement
+                onClick: this.decrement,
+                onMouseOver: this.greeting
             }, '-')
         );
         
